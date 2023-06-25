@@ -43,9 +43,13 @@ function Header() {
               </Link>
             )}
           </NavigationMenuItem>
+          <NavigationMenuItem>
+            <div className="ml-4">
+              <ModeToggle />
+            </div>
+          </NavigationMenuItem>
         </NavigationMenuList>
       </NavigationMenu>
-      <ModeToggle />
     </nav>
   );
 }
