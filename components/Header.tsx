@@ -8,7 +8,7 @@ import {
 } from "@/components/ui/navigation-menu";
 import Link from "next/link";
 import { useUser, UserButton } from "@clerk/nextjs";
-import { User } from "lucide-react";
+import { ModeToggle } from "./ModeToggle";
 
 function Header() {
   const { isSignedIn } = useUser();
@@ -45,6 +45,7 @@ function Header() {
           </NavigationMenuItem>
         </NavigationMenuList>
       </NavigationMenu>
+      <ModeToggle />
     </nav>
   );
 }
