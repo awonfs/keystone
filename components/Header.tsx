@@ -6,6 +6,7 @@ import {
   NavigationMenuList,
   navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu";
+import { Button } from "./ui/button";
 import Link from "next/link";
 import { useUser, UserButton } from "@clerk/nextjs";
 import { ModeToggle } from "./ModeToggle";
@@ -37,9 +38,7 @@ function Header() {
               <UserButton afterSignOutUrl="/" />
             ) : (
               <Link href="/sign-in" legacyBehavior passHref>
-                <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-                  Sign In
-                </NavigationMenuLink>
+                <Button>Sign In</Button>
               </Link>
             )}
           </NavigationMenuItem>
