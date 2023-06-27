@@ -8,7 +8,7 @@ import Affix from "@/components/Affix";
 export default function Home() {
   return (
     <main className="container flex flex-col items-center justify-between p-2">
-      <section className="flex gap-6 justify-center mt-12">
+      <section className="flex gap-6 justify-center mt-2">
         <div className="flex flex-col gap-2">
           <h1 className="text-7xl">Welcome to</h1>
           <span className="text-green-600 text-7xl font-semibold">
@@ -20,7 +20,7 @@ export default function Home() {
           </p>
 
           <Button asChild variant="default">
-            <Link href="/runs">Get Started!</Link>
+            <Link href="/search-characters">Get Started!</Link>
           </Button>
         </div>
         <div>
@@ -36,7 +36,7 @@ export default function Home() {
       </section>
       <section className="flex flex-col gap-4 items-center justify-centermt-6 min-w-full mt-4">
         <Separator />
-        <h2>Weekly affixes</h2>
+
         <Affix />
       </section>
     </main>

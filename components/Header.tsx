@@ -22,7 +22,7 @@ function Header() {
           <NavigationMenuItem>
             <Link href="/keystone-runs" legacyBehavior passHref>
               <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-                Search runs
+                Search Characters
               </NavigationMenuLink>
             </Link>
           </NavigationMenuItem>
