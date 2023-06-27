@@ -1,0 +1,42 @@
+[
+  {
+    "Baseline": "Tyrannical",
+    "2 (+7)": "Storming",
+    "3 (+14)": "Raging"
+  },
+  {
+    "Baseline": "Fortified",
+    "2 (+7)": "Entangling",
+    "3 (+14)": "Bolstering"
+  },
+  {
+    "Baseline": "Tyrannical",
+    "2 (+7)": "Incorporeal",
+    "3 (+14)": "Spiteful"
+  },
+  {
+    "Baseline": "Fortified",
+    "2 (+7)": "Afflicted",
+    "3 (+14)": "Raging"
+  },
+  {
+    "Baseline": "Tyrannical",
+    "2 (+7)": "Volcanic",
+    "3 (+14)": "Sanguine"
+  },
+  {
+    "Baseline": "Fortified",
+    "2 (+7)": "Storming",
+    "3 (+14)": "Bursting"
+  },
+  {
+    "Baseline": "Tyrannical",
+    "2 (+7)": "Afflicted",
+    "3 (+14)": "Bolstering"
+  },
+  {
+    "Baseline": "Fortified",
+    "2 (+7)": "Incorporeal",
+    "3 (+14)": "Sanguine"
+  }
+]
