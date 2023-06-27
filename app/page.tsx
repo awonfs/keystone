@@ -3,9 +3,11 @@ import mythicplus from "../assets/mythicplus.webp";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import Link from "next/link";
+import Affix from "@/components/Affix";
+
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-2">
+    <main className="container flex flex-col items-center justify-between p-2">
       <section className="flex gap-6 justify-center mt-12">
         <div className="flex flex-col gap-2">
           <h1 className="text-7xl">Welcome to</h1>
@@ -31,6 +33,11 @@ export default function Home() {
           width={400}
           height={400}
         />
+      </section>
+      <section className="flex flex-col gap-4 items-center justify-centermt-6 min-w-full mt-4">
+        <Separator />
+        <h2>Weekly affixes</h2>
+        <Affix />
       </section>
     </main>
   );
