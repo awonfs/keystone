@@ -7,7 +7,6 @@ const RAIDERIO_AFFIX_URL =
 interface AffixData {
   title: string;
   region: string;
-  affix_details: [{}];
 }
 
 export default function useAffix() {
