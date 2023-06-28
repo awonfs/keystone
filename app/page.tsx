@@ -8,7 +8,7 @@ import Affix from "@/components/Affix";
 export default function Home() {
   return (
     <main className="container flex flex-col items-center justify-between p-2">
-      <section className="flex gap-6 justify-center mt-2">
+      <section className="flex gap-6 justify-center my-4">
         <div className="flex flex-col gap-2">
           <h1 className="text-7xl">Welcome to</h1>
           <span className="text-green-600 text-7xl font-semibold">
@@ -30,13 +30,12 @@ export default function Home() {
           className="rounded-md"
           src={mythicplus}
           alt="mythic+"
-          width={400}
-          height={400}
+          width={350}
+          height={350}
         />
       </section>
-      <section className="flex flex-col gap-4 items-center justify-centermt-6 min-w-full mt-4">
-        <Separator />
-
+      <Separator />
+      <section className="flex flex-col gap-4 items-start justify-center mt-2 w-2/4">
         <Affix />
       </section>
     </main>

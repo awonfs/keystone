@@ -6,11 +6,11 @@ function Affix() {
   const { data, isLoading } = useAffix();
 
   return (
-    <div className="flex flex-col items-start gap-8">
-      <div className="flex flex-col items-center justify-center gap-4">
-        {isLoading ? "Loading..." : `Current affixes: ${data?.title}`}
-        <AffixList />
-      </div>
+    <div className="flex flex-col items-start gap-4 w-full">
+      <p className="mx-auto">
+        {isLoading ? "Loading..." : `Current Affixes: ${data?.title}`}
+      </p>
+      <AffixList />
     </div>
   );
 }

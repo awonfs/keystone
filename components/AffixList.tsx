@@ -14,7 +14,7 @@ function AffixList() {
     <Table>
       <TableHeader>
         <TableRow>
-          <TableHead className="w-[100px]">Baseline</TableHead>
+          <TableHead>Baseline</TableHead>
           <TableHead>2 (+7)</TableHead>
           <TableHead>3 (+14)</TableHead>
         </TableRow>
