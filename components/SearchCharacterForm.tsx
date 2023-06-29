@@ -15,9 +15,7 @@ import {
 import {
   Select,
   SelectContent,
-  SelectGroup,
   SelectItem,
-  SelectLabel,
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
@@ -74,7 +72,7 @@ function SearchCharacterForm() {
           control={form.control}
           name="region"
           render={({ field }) => (
-            <FormItem>
+            <FormItem className="w-1/3">
               <FormLabel>Region</FormLabel>
               <Select onValueChange={field.onChange} defaultValue={field.value}>
                 <FormControl>
@@ -83,8 +81,8 @@ function SearchCharacterForm() {
                   </SelectTrigger>
                 </FormControl>
                 <SelectContent>
-                  <SelectItem value="EU">EU</SelectItem>
-                  <SelectItem value="NA">NA</SelectItem>
+                  <SelectItem value="eu">EU</SelectItem>
+                  <SelectItem value="us">US</SelectItem>
                   <SelectItem value="KR">KR</SelectItem>
                 </SelectContent>
               </Select>
@@ -92,7 +90,9 @@ function SearchCharacterForm() {
             </FormItem>
           )}
         />
-        <Button type="submit">Submit</Button>
+        <Button className="w-full" type="submit">
+          Submit
+        </Button>
       </form>
     </Form>
   );
