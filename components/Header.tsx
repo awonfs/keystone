@@ -16,7 +16,11 @@ function Header() {
 
   return (
     <nav className="flex justify-around items-center p-4 border-b border-gray-400">
-      <h1 className="text-2xl font-semibold">Keystone</h1>
+      <h1 className="text-2xl font-semibold">
+        <Link href="/" legacyBehavior passHref>
+          Keystone
+        </Link>
+      </h1>
       <NavigationMenu>
         <NavigationMenuList>
           <NavigationMenuItem>
