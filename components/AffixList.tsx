@@ -2,7 +2,6 @@ import data from "../affix-combos.json";
 import {
   Table,
   TableBody,
-  TableCaption,
   TableCell,
   TableHead,
   TableHeader,

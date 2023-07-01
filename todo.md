@@ -1,1 +1,3 @@
-1. Setup React query for data fetching and caching [https://tanstack.com/] setting React query with app directory ---> [https://www.youtube.com/watch?v=oTBXoGh0rLU]
+1. Continue working on search characters page.
+2. Create a useCharacter hook. That takes in the character information and fetched character data from the raider.io API.
+3. Create a character card to show the character information.
