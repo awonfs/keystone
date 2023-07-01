@@ -1,6 +1,8 @@
 "use client";
 
 import * as z from "zod";
+import { characterFormDataAtom } from "@/atoms/characterFormDataAtom";
+import { useAtom } from "jotai";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { Button } from "@/components/ui/button";
@@ -28,17 +30,25 @@ const formSchema = z.object({
 });
 
 function SearchCharacterForm() {
+  const [characterFormData, setCharacterFormData] = useAtom(
+    characterFormDataAtom
+  );
+
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
       characterName: "",
       realm: "",
+      region: "eu",
     },
   });
 
   function onSubmit(values: z.infer<typeof formSchema>) {
-    console.log(values);
+    setCharacterFormData(values);
+    console.log(characterFormData);
+    form.reset();
   }
+
   return (
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
