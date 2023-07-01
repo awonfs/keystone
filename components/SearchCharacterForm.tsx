@@ -44,8 +44,7 @@ function SearchCharacterForm() {
   });
 
   function onSubmit(values: z.infer<typeof formSchema>) {
-    setCharacterFormData(values);
-    console.log(characterFormData);
+    console.log(values);
     form.reset();
   }
 
