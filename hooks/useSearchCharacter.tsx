@@ -36,5 +36,6 @@ export default function useSearchCharacter() {
       const { data } = await axios.get(RAIDERIO_CHARACTER_URL);
       return data as CharacterData;
     },
+    enabled: !!characterName && !!realm && !!region,
   });
 }
