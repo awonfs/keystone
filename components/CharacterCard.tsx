@@ -1,15 +1,10 @@
-import { useQuery } from "@tanstack/react-query";
-import axios from "axios";
+"use client";
+import useSearchCharacter from "@/hooks/useSearchCharacter";
 
 function CharacterCard() {
-  const { data, isLoading, error } = useQuery({
-    queryKey: ["character"],
-    queryFn: async () => {
-      // todo fetch character data
-    },
-  });
+  const { data, isLoading, isError, error } = useSearchCharacter();
 
-  return <div>CharacterCard</div>;
+  return <div>hi</div>;
 }
 
 export default CharacterCard;
