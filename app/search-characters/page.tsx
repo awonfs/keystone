@@ -1,5 +1,5 @@
 import SearchCharacterForm from "@/components/SearchCharacterForm";
-import CharacterCard from "@/components/CharacterCard";
+import CharacterInfo from "@/components/CharacterInfo";
 
 function SearchCharactersPage() {
   return (
@@ -9,7 +9,7 @@ function SearchCharactersPage() {
         <div className="w-1/2 border border-dashed border-gray-300 p-8">
           <SearchCharacterForm />
         </div>
-        <CharacterCard />
+        <CharacterInfo />
       </div>
     </main>
   );
