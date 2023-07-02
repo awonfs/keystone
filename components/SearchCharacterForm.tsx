@@ -30,9 +30,7 @@ const formSchema = z.object({
 });
 
 function SearchCharacterForm() {
-  const [characterFormData, setCharacterFormData] = useAtom(
-    characterFormDataAtom
-  );
+  const [, setCharacterFormData] = useAtom(characterFormDataAtom);
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -45,6 +43,12 @@ function SearchCharacterForm() {
 
   function onSubmit(values: z.infer<typeof formSchema>) {
     console.log(values);
+    const { characterName, realm, region } = values;
+    setCharacterFormData({
+      characterName,
+      realm,
+      region,
+    });
     form.reset();
   }
 

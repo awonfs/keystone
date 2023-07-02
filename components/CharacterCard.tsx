@@ -2,9 +2,9 @@
 import useSearchCharacter from "@/hooks/useSearchCharacter";
 
 function CharacterCard() {
-  const { data, isLoading, isError, error } = useSearchCharacter();
+  const { data, isLoading } = useSearchCharacter();
 
-  return <div>hi</div>;
+  return <div>{isLoading ? <div>Loading...</div> : JSON.stringify(data)}</div>;
 }
 
 export default CharacterCard;
