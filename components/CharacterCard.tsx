@@ -13,6 +13,7 @@ import {
 import { Avatar, AvatarImage } from "@/components/ui/avatar";
 import { Separator } from "@/components/ui/separator";
 import CardSkeleton from "./CardSkeleton";
+import RecentRuns from "./RecentRuns";
 
 function CharacterCard() {
   const { data, isFetching, isError } = useSearchCharacter();
@@ -58,6 +59,7 @@ function CharacterCard() {
           <span className="text-purple-600">{`Mythic+ score: ${data?.mythic_plus_scores_by_season[0].scores.all}`}</span>
         </CardFooter>
       </Card>
+      <RecentRuns recentRuns={data?.mythic_plus_recent_runs} />
     </div>
   );
 }
