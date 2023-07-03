@@ -24,6 +24,9 @@ export interface CharacterData {
     name: string | undefined;
     realm: string | undefined;
   };
+  gear: {
+    item_level_equipped: number | undefined;
+  };
 }
 
 function wait() {
