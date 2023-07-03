@@ -10,11 +10,17 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import CardSkeleton from "./CardSkeleton";
 
 function CharacterCard() {
   const { data, isFetching } = useSearchCharacter();
 
-  if (isFetching) return <div>Loading...</div>;
+  if (isFetching)
+    return (
+      <div className="p-8">
+        <CardSkeleton />
+      </div>
+    );
 
   if (!data) return <div></div>;
 

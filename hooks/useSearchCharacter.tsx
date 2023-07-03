@@ -26,6 +26,10 @@ export interface CharacterData {
   };
 }
 
+function wait() {
+  return new Promise((resolve) => setTimeout(resolve, 2000));
+}
+
 export default function useSearchCharacter() {
   const [characterFormData] = useAtom(characterFormDataAtom);
   const { characterName, realm, region } = characterFormData;
@@ -33,6 +37,7 @@ export default function useSearchCharacter() {
   return useQuery({
     queryKey: ["character", characterFormData],
     queryFn: async () => {
+      await wait();
       const { data } = await axios.get(RAIDERIO_CHARACTER_URL);
       return data as CharacterData;
     },
