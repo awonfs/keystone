@@ -16,7 +16,7 @@ function RecentRuns({ recentRuns }: RecentRunsProps) {
 
   return (
     <div>
-      <h1>Recent runs</h1>
+      <h1>Recently timed runs</h1>
       <ul>
         {completedRunsOnTime.map((run) => {
           return (
