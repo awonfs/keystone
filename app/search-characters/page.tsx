@@ -9,7 +9,9 @@ function SearchCharactersPage() {
         <div className="w-1/2 border border-dashed border-gray-300 p-8">
           <SearchCharacterForm />
         </div>
-        <CharacterInfo />
+        <div className="w-1/2">
+          <CharacterInfo />
+        </div>
       </div>
     </main>
   );
