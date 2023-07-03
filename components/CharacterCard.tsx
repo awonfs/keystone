@@ -1,15 +1,65 @@
-import { useQuery } from "@tanstack/react-query";
-import axios from "axios";
+/* eslint-disable @next/next/no-img-element */
+"use client";
+import useSearchCharacter from "@/hooks/useSearchCharacter";
+
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import { Avatar, AvatarImage } from "@/components/ui/avatar";
+import { Separator } from "@/components/ui/separator";
+import CardSkeleton from "./CardSkeleton";
 
 function CharacterCard() {
-  const { data, isLoading, error } = useQuery({
-    queryKey: ["character"],
-    queryFn: async () => {
-      // todo fetch character data
-    },
-  });
+  const { data, isFetching, isError } = useSearchCharacter();
 
-  return <div>CharacterCard</div>;
+  if (isFetching)
+    return (
+      <div className="p-8">
+        <CardSkeleton />
+      </div>
+    );
+
+  if (isError)
+    return (
+      <div className="flex flex-col items-center justify-center">
+        <span className="text-red-500">Cannot find the character</span> Please
+        check that you submitted the right information!
+      </div>
+    );
+
+  if (!data) return <div></div>;
+
+  return (
+    <div className="p-8">
+      <Card className="flex flex-col items-center border ">
+        <CardHeader className="flex flex-col items-center">
+          <Avatar className="h-25 w-25 mb-2">
+            <AvatarImage src={data?.thumbnail_url} />
+          </Avatar>
+          <CardTitle>
+            {data?.name} - {data?.realm}
+          </CardTitle>
+          <CardDescription>
+            {`${data?.race} ${data?.active_spec_name} ${data?.class}`}
+          </CardDescription>
+          <CardDescription>{data?.guild.name}</CardDescription>
+        </CardHeader>
+        <Separator className="w-1/2" />
+        <CardContent className="flex flex-col gap-1 items-center mt-4">
+          <p>{`${data?.gear.item_level_equipped} Item level`}</p>
+          <p>{`${data?.achievement_points} Achievement points`}</p>
+        </CardContent>
+        <CardFooter>
+          <span className="text-purple-600">{`Mythic+ score: ${data?.mythic_plus_scores_by_season[0].scores.all}`}</span>
+        </CardFooter>
+      </Card>
+    </div>
+  );
 }
 
 export default CharacterCard;
