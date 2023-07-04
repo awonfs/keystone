@@ -27,6 +27,14 @@ export interface CharacterData {
   gear: {
     item_level_equipped: number | undefined;
   };
+  mythic_plus_recent_runs: [
+    {
+      dungeon: string | undefined;
+      short_name: string | undefined;
+      mythic_level: number | undefined;
+      num_keystone_upgrades: number | undefined;
+    }
+  ];
 }
 
 function wait() {
