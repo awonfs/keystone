@@ -1,6 +1,6 @@
-async function MyProfilePage() {
+function MyProfilePage() {
   return (
-    <div className="container flex items-center justify-center">
+    <div className="container flex flex-col items-center justify-center">
       MyProfilePage
     </div>
   );

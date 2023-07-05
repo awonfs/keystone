@@ -10,7 +10,7 @@ datasource db {
   relationMode = "prisma"
 }
 
-model Character {
+model Characters {
   id        String      @id @default(uuid())
   name      String
   realm     String
