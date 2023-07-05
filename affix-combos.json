@@ -38,5 +38,10 @@
     "Baseline": "Fortified",
     "2 (+7)": "Incorporeal",
     "3 (+14)": "Sanguine"
+  },
+  {
+    "Baseline": "Tyrannical",
+    "2 (+7)": "Entangling",
+    "3 (+14)": "Bursting"
   }
 ]
