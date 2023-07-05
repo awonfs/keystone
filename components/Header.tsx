@@ -39,7 +39,18 @@ function Header() {
           </NavigationMenuItem>
           <NavigationMenuItem>
             {isSignedIn ? (
-              <UserButton afterSignOutUrl="/" />
+              <div className="flex gap-2 items-center justify-center">
+                <NavigationMenuItem>
+                  <Link href="/my-profile" legacyBehavior passHref>
+                    <NavigationMenuLink
+                      className={navigationMenuTriggerStyle()}
+                    >
+                      Profile
+                    </NavigationMenuLink>
+                  </Link>
+                </NavigationMenuItem>
+                <UserButton afterSignOutUrl="/" />
+              </div>
             ) : (
               <Link href="/sign-in" legacyBehavior passHref>
                 <Button>Sign In</Button>
