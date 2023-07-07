@@ -3,6 +3,7 @@
 import * as z from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
+import axios from "axios";
 import {
   Form,
   FormControl,
@@ -37,8 +38,13 @@ function AddCharacterForm() {
     },
   });
 
-  function onSubmit(values: z.infer<typeof formSchema>) {
-    console.log(values);
+  async function onSubmit(values: z.infer<typeof formSchema>) {
+    const { characterName, realm, region } = values;
+    await axios.post("/api/create", {
+      name: characterName,
+      realm,
+      region,
+    });
     form.reset();
   }
   return (
