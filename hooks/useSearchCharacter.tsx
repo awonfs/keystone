@@ -21,8 +21,8 @@ export interface CharacterData {
     }
   ];
   guild: {
-    name: string | undefined;
-    realm: string | undefined;
+    name: string | undefined | null;
+    realm: string | undefined | null;
   };
   gear: {
     item_level_equipped: number | undefined;

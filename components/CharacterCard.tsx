@@ -35,47 +35,35 @@ function CharacterCard() {
 
   if (!data) return <div></div>;
 
-  const {
-    name,
-    race,
-    class: className,
-    active_spec_name,
-    achievement_points,
-    thumbnail_url,
-    realm,
-    mythic_plus_recent_runs,
-    guild: { name: guildName = "" } = {},
-    gear: { item_level_equipped = 0 } = {},
-    mythic_plus_scores_by_season: [
-      { scores: { all: mythicPlusScore = 0 } = {} } = {},
-    ] = [],
-  } = data;
-
   return (
     <div className="p-8">
       <Card className="flex flex-col items-center border ">
         <CardHeader className="flex flex-col items-center">
           <Avatar className="h-25 w-25 mb-2">
-            <AvatarImage src={thumbnail_url} />
+            <AvatarImage src={data?.thumbnail_url} />
           </Avatar>
           <CardTitle>
-            {name} - {realm}
+            {data?.name} - {data?.realm}
           </CardTitle>
           <CardDescription>
-            {`${race} ${active_spec_name} ${className}`}
+            {`${data?.race} ${data?.active_spec_name} ${data?.class}`}
           </CardDescription>
-          <CardDescription>{guildName}</CardDescription>
+          {data?.guild ? (
+            <CardDescription>{data?.guild.name}</CardDescription>
+          ) : (
+            <CardDescription>No guild found</CardDescription>
+          )}
         </CardHeader>
         <Separator className="w-1/2" />
         <CardContent className="flex flex-col gap-1 items-center mt-4">
-          <p>{`${item_level_equipped} Item level`}</p>
-          <p>{`${achievement_points} Achievement points`}</p>
+          <p>{`${data?.gear.item_level_equipped} Item level`}</p>
+          <p>{`${data?.achievement_points} Achievement points`}</p>
         </CardContent>
         <CardFooter>
-          <span className="text-purple-600">{`Mythic+ score: ${mythicPlusScore}`}</span>
+          <span className="text-purple-600">{`Mythic+ score: ${data?.mythic_plus_scores_by_season[0].scores.all}`}</span>
         </CardFooter>
       </Card>
-      <RecentRuns recentRuns={mythic_plus_recent_runs} />
+      <RecentRuns recentRuns={data?.mythic_plus_recent_runs} />
     </div>
   );
 }
