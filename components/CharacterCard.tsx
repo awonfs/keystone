@@ -48,7 +48,11 @@ function CharacterCard() {
           <CardDescription>
             {`${data?.race} ${data?.active_spec_name} ${data?.class}`}
           </CardDescription>
-          <CardDescription>{data?.guild.name}</CardDescription>
+          {data?.guild ? (
+            <CardDescription>{data?.guild.name}</CardDescription>
+          ) : (
+            <CardDescription>No guild found</CardDescription>
+          )}
         </CardHeader>
         <Separator className="w-1/2" />
         <CardContent className="flex flex-col gap-1 items-center mt-4">
