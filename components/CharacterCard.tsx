@@ -46,17 +46,20 @@ function CharacterCard() {
             {data?.name} - {data?.realm}
           </CardTitle>
           <CardDescription>
-            {`${data?.race} ${data?.active_spec_name} ${data?.class}`}
+            <span className="text-yellow-500">
+              {" "}
+              {`${data?.race} ${data?.active_spec_name} ${data?.class}`}
+            </span>
           </CardDescription>
           {data?.guild ? (
             <CardDescription>{data?.guild.name}</CardDescription>
           ) : (
-            <CardDescription>No guild found</CardDescription>
+            <CardDescription>Character has no guild</CardDescription>
           )}
         </CardHeader>
         <Separator className="w-1/2" />
         <CardContent className="flex flex-col gap-1 items-center mt-4">
-          <p>{`${data?.gear.item_level_equipped} Item level`}</p>
+          <span className="text-green-500">{`${data?.gear.item_level_equipped} Item level`}</span>
           <p>{`${data?.achievement_points} Achievement points`}</p>
         </CardContent>
         <CardFooter>
