@@ -21,6 +21,7 @@ import {
 } from "@/components/ui/select";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
+import { dialogClose } from "./ui/dialog";
 
 const formSchema = z.object({
   characterName: z.string().nonempty(),
@@ -46,6 +47,7 @@ function AddCharacterForm() {
       region,
     });
     form.reset();
+    dialogClose();
   }
   return (
     <Form {...form}>
