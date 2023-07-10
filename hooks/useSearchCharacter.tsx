@@ -37,8 +37,8 @@ export interface CharacterData {
   ];
 }
 
-function wait() {
-  return new Promise((resolve) => setTimeout(resolve, 2000));
+export function wait(time: number) {
+  return new Promise((resolve) => setTimeout(resolve, time));
 }
 
 export default function useSearchCharacter() {
@@ -48,7 +48,7 @@ export default function useSearchCharacter() {
   return useQuery({
     queryKey: ["character", characterFormData],
     queryFn: async () => {
-      await wait();
+      await wait(2000);
       const { data } = await axios.get(RAIDERIO_CHARACTER_URL);
       return data as CharacterData;
     },

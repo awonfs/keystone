@@ -1,5 +1,4 @@
 "use client";
-
 import * as z from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
@@ -22,6 +21,9 @@ import {
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { dialogClose } from "./ui/dialog";
+import { useState } from "react";
+import ThreeDotsWave from "./spinners/ThreeDotSpinner";
+import { wait } from "@/hooks/useSearchCharacter";
 
 const formSchema = z.object({
   characterName: z.string().nonempty(),
@@ -30,6 +32,8 @@ const formSchema = z.object({
 });
 
 function AddCharacterForm() {
+  const [isLoading, setIsLoading] = useState(false);
+
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -41,6 +45,7 @@ function AddCharacterForm() {
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
     const { characterName, realm, region } = values;
+    setIsLoading(true);
     await axios.post("/api/create", {
       name: characterName,
       realm,
@@ -48,6 +53,8 @@ function AddCharacterForm() {
     });
     form.reset();
     dialogClose();
+    await wait(500);
+    setIsLoading(false);
   }
   return (
     <Form {...form}>
@@ -101,7 +108,7 @@ function AddCharacterForm() {
           )}
         />
         <Button className="w-full" type="submit">
-          Submit
+          {isLoading ? <ThreeDotsWave /> : "Submit"}
         </Button>
       </form>
     </Form>
