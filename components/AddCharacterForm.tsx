@@ -24,6 +24,7 @@ import { dialogClose } from "./ui/dialog";
 import { useState } from "react";
 import ThreeDotsWave from "./spinners/ThreeDotSpinner";
 import { wait } from "@/hooks/useSearchCharacter";
+import { useQueryClient } from "@tanstack/react-query";
 
 const formSchema = z.object({
   characterName: z.string().nonempty(),
@@ -32,6 +33,8 @@ const formSchema = z.object({
 });
 
 function AddCharacterForm() {
+  const queryClient = useQueryClient();
+
   const [isLoading, setIsLoading] = useState(false);
 
   const form = useForm<z.infer<typeof formSchema>>({
@@ -53,6 +56,7 @@ function AddCharacterForm() {
     });
     form.reset();
     dialogClose();
+    await queryClient.invalidateQueries({ queryKey: ["characters"] });
     await wait(500);
     setIsLoading(false);
   }
