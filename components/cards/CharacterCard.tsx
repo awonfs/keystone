@@ -13,7 +13,7 @@ import {
 import { Avatar, AvatarImage } from "@/components/ui/avatar";
 import { Separator } from "@/components/ui/separator";
 import CardSkeleton from "./CardSkeleton";
-import RecentRuns from "./RecentRuns";
+import RecentRuns from "../RecentRuns";
 
 function CharacterCard() {
   const { data, isFetching, isError } = useSearchCharacter();

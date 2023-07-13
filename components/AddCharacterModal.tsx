@@ -7,7 +7,7 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
-import AddCharacterForm from "./AddCharacterForm";
+import AddCharacterForm from "./forms/AddCharacterForm";
 
 function AddCharacterModal() {
   return (

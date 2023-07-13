@@ -15,5 +15,6 @@ export default function useGetusersCharacters() {
       const { data } = await axios.get("/api/get-characters");
       return data as Character[];
     },
+    refetchOnWindowFocus: false,
   });
 }

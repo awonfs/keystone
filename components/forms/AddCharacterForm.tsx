@@ -20,9 +20,9 @@ import {
 } from "@/components/ui/select";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { dialogClose } from "./ui/dialog";
+import { dialogClose } from "../ui/dialog";
 import { useState } from "react";
-import ThreeDotsWave from "./spinners/ThreeDotSpinner";
+import ThreeDotsWave from "../spinners/ThreeDotSpinner";
 import { wait } from "@/hooks/useSearchCharacter";
 import { useQueryClient } from "@tanstack/react-query";
 
