@@ -23,8 +23,8 @@ import { Button } from "@/components/ui/button";
 import { dialogClose } from "../ui/dialog";
 import { useState } from "react";
 import ThreeDotsWave from "../spinners/ThreeDotSpinner";
-import { wait } from "@/hooks/useSearchCharacter";
 import { useQueryClient } from "@tanstack/react-query";
+import { wait } from "@/utils/functions/wait";
 
 const formSchema = z.object({
   characterName: z.string().nonempty(),

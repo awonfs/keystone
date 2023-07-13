@@ -1,6 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 "use client";
-import useSearchCharacter from "@/hooks/useSearchCharacter";
+import useSearchCharacter from "@/utils/hooks/useSearchCharacter";
 
 import {
   Card,

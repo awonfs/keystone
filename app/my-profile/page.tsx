@@ -1,6 +1,6 @@
 "use client";
 import AddCharacterModal from "@/components/AddCharacterModal";
-import useGetusersCharacters from "@/hooks/useGetUsersCharacters";
+import useGetusersCharacters from "@/utils/hooks/useGetUsersCharacters";
 import CharacterPreviewCard from "@/components/cards/CharacterPreviewCard";
 
 function MyProfilePage() {

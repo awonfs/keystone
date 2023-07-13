@@ -1,5 +1,5 @@
 "use client";
-import useAffix from "@/hooks/useAffix";
+import useAffix from "@/utils/hooks/useAffix";
 import AffixList from "./AffixList";
 
 function Affix() {

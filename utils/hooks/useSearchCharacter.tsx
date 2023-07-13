@@ -2,6 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import { useAtom } from "jotai";
 import { characterFormDataAtom } from "@/atoms/characterFormDataAtom";
+import { wait } from "../functions/wait";
 
 export interface CharacterData {
   name: string | undefined;
@@ -35,10 +36,6 @@ export interface CharacterData {
       num_keystone_upgrades: number | undefined;
     }
   ];
-}
-
-export function wait(time: number) {
-  return new Promise((resolve) => setTimeout(resolve, time));
 }
 
 export default function useSearchCharacter() {
