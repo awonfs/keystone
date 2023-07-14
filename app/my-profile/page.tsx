@@ -5,7 +5,7 @@ import CharacterPreviewCard from "@/components/cards/CharacterPreviewCard";
 
 function MyProfilePage() {
   const { data: characters } = useGetusersCharacters();
-  console.log(characters);
+
   return (
     <div className="container flex flex-col items-center justify-center">
       <header className="flex items-center justify-evenly w-full mt-4">
@@ -19,6 +19,7 @@ function MyProfilePage() {
               key={character.id}
               name={character.name}
               realm={character.realm}
+              id={character.id}
             />
           );
         })}
