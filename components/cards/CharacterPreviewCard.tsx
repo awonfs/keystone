@@ -50,7 +50,9 @@ function CharacterPreviewCard({
       </CardHeader>
       <CardContent>
         <Button asChild>
-          <Link href={`/my-profile?name=${name}realm=${realm}region${region}`}>
+          <Link
+            href={`/character?name=${name}&realm=${realm}&region=${region}`}
+          >
             View character <ArrowRight />
           </Link>
         </Button>
