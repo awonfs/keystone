@@ -11,18 +11,21 @@ import Link from "next/link";
 import { ArrowRight, XCircle } from "lucide-react";
 import axios from "axios";
 import { useQueryClient } from "@tanstack/react-query";
-import useGetusersCharacters from "@/utils/hooks/useGetUsersCharacters";
-import { wait } from "@/utils/functions/wait";
 
 type CharacterPreviewCardProps = {
   name: string;
   realm: string;
   id: string;
+  region: string;
 };
 
-function CharacterPreviewCard({ name, realm, id }: CharacterPreviewCardProps) {
+function CharacterPreviewCard({
+  name,
+  realm,
+  id,
+  region,
+}: CharacterPreviewCardProps) {
   const queryClient = useQueryClient();
-  const { data, isFetching } = useGetusersCharacters();
 
   async function handleDelete() {
     try {
@@ -47,7 +50,7 @@ function CharacterPreviewCard({ name, realm, id }: CharacterPreviewCardProps) {
       </CardHeader>
       <CardContent>
         <Button asChild>
-          <Link href={`/character/${realm}/${name}`}>
+          <Link href={`/my-profile?name=${name}realm=${realm}region${region}`}>
             View character <ArrowRight />
           </Link>
         </Button>

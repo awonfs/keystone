@@ -55,8 +55,8 @@ function AddCharacterForm() {
       region,
     });
     form.reset();
-    dialogClose();
     await queryClient.invalidateQueries({ queryKey: ["characters"] });
+    dialogClose();
     await wait(500);
     setIsLoading(false);
   }

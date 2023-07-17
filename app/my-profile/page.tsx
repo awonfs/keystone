@@ -20,6 +20,7 @@ function MyProfilePage() {
               name={character.name}
               realm={character.realm}
               id={character.id}
+              region={character.region}
             />
           );
         })}
