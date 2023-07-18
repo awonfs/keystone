@@ -4,6 +4,7 @@ import { useSearchParams } from "next/navigation";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import { CharacterData } from "@/utils/hooks/useSearchCharacter";
+import { Separator } from "@/components/ui/separator";
 
 function CharacterPage() {
   const searchParams = useSearchParams();
@@ -59,6 +60,7 @@ function CharacterPage() {
           <span className="text-purple-500">Mythic+ score</span>
         </section>
       </div>
+      <Separator className="my-8 w-2/3" />
     </main>
   );
 }
