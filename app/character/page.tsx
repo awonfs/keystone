@@ -1,7 +1,9 @@
+/* eslint-disable @next/next/no-img-element */
 "use client";
 import { useSearchParams } from "next/navigation";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
+import { CharacterData } from "@/utils/hooks/useSearchCharacter";
 
 function CharacterPage() {
   const searchParams = useSearchParams();
@@ -10,22 +12,54 @@ function CharacterPage() {
   const region = searchParams.get("region");
   const RAIDERIO_CHARACTER_URL = `https://raider.io/api/v1/characters/profile?region=${region}&realm=${realm}&name=${name}&fields=mythic_plus_scores_by_season%3Acurrent%2Cgear%2Cguild%2Cmythic_plus_recent_runs`;
 
-  const { data, isLoading, error } = useQuery({
+  const { data, isLoading, isError, isFetching } = useQuery({
     queryKey: ["specific character", { name, realm, region }],
     queryFn: async () => {
-      //TODO: Fetch character data from the raider.io API
       const { data } = await axios.get(RAIDERIO_CHARACTER_URL);
-      return data;
+      return data as CharacterData;
     },
   });
 
+  if (isFetching) return <div className="p-8">Loading...</div>;
+
+  if (isError)
+    return (
+      <div className="flex flex-col items-center justify-center">
+        <span className="text-red-500">Cannot find the character</span> Please
+        check that you submitted the right information!
+      </div>
+    );
+
+  if (!data) return <div></div>;
+
   return (
-    <div className="container flex flex-col justify-center items-center mt-6">
-      <h1 className="text-3xl font-bold">Character</h1>
-      <p className="text-xl">Name: {name}</p>
-      <p className="text-xl">Realm: {realm}</p>
-      <p className="text-xl">Region: {region}</p>
-    </div>
+    <main className="container flex flex-col justify-center items-center mt-6">
+      <div className="flex justify-evenly w-full">
+        <section id="characterinfo" className="flex gap-4">
+          <img
+            src={data.thumbnail_url}
+            alt="character avatar"
+            className="rounded-sm"
+          />
+          <div>
+            <h1 className="text-3xl font-bold">{data.name}</h1>
+            <p>{data.guild.name}</p>
+            <p>
+              ({data.region?.toUpperCase()}) {data.realm}
+            </p>
+          </div>
+        </section>
+        <section
+          id="mythicplus"
+          className="flex flex-col justify-center border p-2 "
+        >
+          <h2 className="text-center font-semibold">
+            {data.mythic_plus_scores_by_season[0].scores.all}
+          </h2>
+          <span className="text-purple-500">Mythic+ score</span>
+        </section>
+      </div>
+    </main>
   );
 }
 
