@@ -6,6 +6,7 @@ import {
   CardHeader,
 } from "@/components/ui/card";
 
+import { useToast } from "@/components/ui/use-toast";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { ArrowRight, XCircle } from "lucide-react";
@@ -26,12 +27,18 @@ function CharacterPreviewCard({
   region,
 }: CharacterPreviewCardProps) {
   const queryClient = useQueryClient();
+  const toast = useToast();
 
   async function handleDelete() {
     try {
       const res = await axios.delete(`/api/delete-character?id=${id}`);
       await queryClient.invalidateQueries({ queryKey: ["characters"] });
       console.log(res);
+      toast.toast({
+        title: "Character deleted",
+        description: "Character deleted successfully",
+        variant: "destructive",
+      });
     } catch (error) {
       console.log(error);
     }
