@@ -2,7 +2,6 @@
 import * as z from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
-import axios from "axios";
 import {
   Form,
   FormControl,
@@ -20,6 +19,7 @@ import {
 } from "@/components/ui/select";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
+import { useToast } from "../ui/use-toast";
 import { dialogClose } from "../ui/dialog";
 import { useState } from "react";
 import ThreeDotsWave from "../spinners/ThreeDotSpinner";
@@ -34,6 +34,7 @@ export const formSchema = z.object({
 
 function AddCharacterForm() {
   const [isLoading, setIsLoading] = useState(false);
+  const toast = useToast();
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -51,6 +52,11 @@ function AddCharacterForm() {
       await createCharacter.mutateAsync(values);
       form.reset();
       dialogClose();
+      toast.toast({
+        title: "Character added",
+        description:
+          "Your character has been added to your profile successfully!",
+      });
     } catch (error) {
       console.error(error);
     } finally {
