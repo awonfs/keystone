@@ -23,18 +23,16 @@ import { Button } from "@/components/ui/button";
 import { dialogClose } from "../ui/dialog";
 import { useState } from "react";
 import ThreeDotsWave from "../spinners/ThreeDotSpinner";
-import { useQueryClient } from "@tanstack/react-query";
+import useCreateCharacter from "@/utils/hooks/useCreateCharacter";
 import { wait } from "@/utils/functions/wait";
 
-const formSchema = z.object({
+export const formSchema = z.object({
   characterName: z.string().nonempty(),
   realm: z.string().nonempty(),
   region: z.string().nonempty(),
 });
 
 function AddCharacterForm() {
-  const queryClient = useQueryClient();
-
   const [isLoading, setIsLoading] = useState(false);
 
   const form = useForm<z.infer<typeof formSchema>>({
@@ -45,20 +43,20 @@ function AddCharacterForm() {
       region: "eu",
     },
   });
+  const createCharacter = useCreateCharacter();
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
-    const { characterName, realm, region } = values;
     setIsLoading(true);
-    await axios.post("/api/create", {
-      name: characterName,
-      realm,
-      region,
-    });
-    form.reset();
-    await queryClient.invalidateQueries({ queryKey: ["characters"] });
-    dialogClose();
-    await wait(500);
-    setIsLoading(false);
+    try {
+      await createCharacter.mutateAsync(values);
+      form.reset();
+      dialogClose();
+    } catch (error) {
+      console.error(error);
+    } finally {
+      await wait(500);
+      setIsLoading(false);
+    }
   }
   return (
     <Form {...form}>
