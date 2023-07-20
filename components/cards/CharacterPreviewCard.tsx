@@ -5,13 +5,11 @@ import {
   CardDescription,
   CardHeader,
 } from "@/components/ui/card";
-
 import { useToast } from "@/components/ui/use-toast";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { ArrowRight, XCircle } from "lucide-react";
-import axios from "axios";
-import { useQueryClient } from "@tanstack/react-query";
+import useDeleteCharacter from "@/utils/hooks/useDeleteCharacter";
 
 type CharacterPreviewCardProps = {
   name: string;
@@ -26,14 +24,12 @@ function CharacterPreviewCard({
   id,
   region,
 }: CharacterPreviewCardProps) {
-  const queryClient = useQueryClient();
   const toast = useToast();
+  const deleteCharacter = useDeleteCharacter(id);
 
   async function handleDelete() {
     try {
-      const res = await axios.delete(`/api/delete-character?id=${id}`);
-      await queryClient.invalidateQueries({ queryKey: ["characters"] });
-      console.log(res);
+      await deleteCharacter.mutateAsync();
       toast.toast({
         title: "Character deleted",
         description: "Character deleted successfully",
