@@ -14,7 +14,7 @@ export default function Home() {
         <motion.div
           initial={{ x: "-100vw" }}
           animate={{ x: 0 }}
-          transition={{ type: "spring", stiffness: 60 }}
+          transition={{ type: "spring", stiffness: 40 }}
           className="flex flex-col gap-2"
         >
           <h1 className="text-7xl">Welcome to</h1>
@@ -26,7 +26,7 @@ export default function Home() {
             The best way to search and track anything related to mythic+
           </p>
           <Button asChild variant="default">
-            <Link href="/search-characters">Get Started!</Link>
+            <Link href="/search-characters">Search Characters</Link>
           </Button>
         </motion.div>
 

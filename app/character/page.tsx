@@ -13,7 +13,7 @@ function CharacterPage() {
   const region = searchParams.get("region");
   const RAIDERIO_CHARACTER_URL = `https://raider.io/api/v1/characters/profile?region=${region}&realm=${realm}&name=${name}&fields=mythic_plus_scores_by_season%3Acurrent%2Cgear%2Cguild%2Cmythic_plus_recent_runs`;
 
-  const { data, isLoading, isError, isFetching } = useQuery({
+  const { data, isError, isFetching } = useQuery({
     queryKey: ["specific character", { name, realm, region }],
     queryFn: async () => {
       const { data } = await axios.get(RAIDERIO_CHARACTER_URL);
