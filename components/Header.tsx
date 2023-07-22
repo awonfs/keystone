@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 "use client";
 import {
   NavigationMenu,
@@ -10,17 +11,22 @@ import { Button } from "./ui/button";
 import Link from "next/link";
 import { useUser, UserButton } from "@clerk/nextjs";
 import { ModeToggle } from "./ModeToggle";
+import { Hourglass } from "lucide-react";
 
 function Header() {
   const { isSignedIn } = useUser();
 
   return (
     <nav className="flex justify-around items-center p-4 border-b border-gray-400">
-      <h1 className="text-2xl font-semibold">
-        <Link href="/" legacyBehavior passHref>
-          Keystone
-        </Link>
-      </h1>
+      <div className="flex gap-2 items-center justify-center">
+        <Hourglass />
+        <h1 className="text-2xl font-semibold">
+          <Link href="/" legacyBehavior passHref>
+            Keystone
+          </Link>
+        </h1>
+      </div>
+
       <NavigationMenu>
         <NavigationMenuList>
           <NavigationMenuItem>

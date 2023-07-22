@@ -44,7 +44,7 @@ function CharacterPage() {
           />
           <div>
             <h1 className="text-3xl font-bold">{data.name}</h1>
-            <p>{data.guild.name}</p>
+            {data.guild ? <p>{data.guild.name}</p> : null}
             <p>
               ({data.region?.toUpperCase()}) {data.realm}
             </p>
