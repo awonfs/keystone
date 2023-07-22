@@ -26,7 +26,35 @@ export interface CharacterData {
     realm: string | undefined | null;
   };
   gear: {
+    updated_at: string | undefined;
     item_level_equipped: number | undefined;
+    item_level_total: number | undefined;
+    artifact_traits: number | undefined;
+    corruption: {
+      added: number | undefined;
+      resisted: number | undefined;
+      total: number | undefined;
+      cloakRank: number | undefined;
+      spells: any[] | undefined;
+    };
+    items: {
+      head: GearItem | undefined;
+      neck: GearItem | undefined;
+      shoulder: GearItem | undefined;
+      back: GearItem | undefined;
+      chest: GearItem | undefined;
+      waist: GearItem | undefined;
+      wrist: GearItem | undefined;
+      hands: GearItem | undefined;
+      legs: GearItem | undefined;
+      feet: GearItem | undefined;
+      finger1: GearItem | undefined;
+      finger2: GearItem | undefined;
+      trinket1: GearItem | undefined;
+      trinket2: GearItem | undefined;
+      mainhand: GearItem | undefined;
+      offhand: GearItem | undefined;
+    };
   };
   mythic_plus_recent_runs: [
     {
@@ -36,6 +64,14 @@ export interface CharacterData {
       num_keystone_upgrades: number | undefined;
     }
   ];
+}
+
+interface GearItem {
+  item_id: number | undefined;
+  item_level: number | undefined;
+  icon: string | undefined;
+  name: string | undefined;
+  item_quality: number | undefined;
 }
 
 export default function useSearchCharacter() {

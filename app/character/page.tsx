@@ -5,6 +5,7 @@ import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import { CharacterData } from "@/utils/hooks/useSearchCharacter";
 import { Separator } from "@/components/ui/separator";
+import GearCard from "@/components/cards/GearCard";
 
 function CharacterPage() {
   const searchParams = useSearchParams();
@@ -61,6 +62,9 @@ function CharacterPage() {
         </section>
       </div>
       <Separator className="my-8 w-2/3" />
+      <section id="gear" className="flex flex-col gap-4">
+        <GearCard gear={data.gear} />
+      </section>
     </main>
   );
 }
