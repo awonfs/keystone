@@ -43,5 +43,10 @@
     "Baseline": "Tyrannical",
     "2 (+7)": "Entangling",
     "3 (+14)": "Bursting"
+  },
+  {
+    "Baseline": "Fortified",
+    "2 (+7)": "Volcanic",
+    "3 (+14)": "Spiteful"
   }
 ]
