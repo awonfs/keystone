@@ -22,7 +22,8 @@ function CharacterPage() {
     },
   });
 
-  if (isFetching) return <div className="p-8">Loading...</div>;
+  if (isFetching)
+    return <div className="container flex justify-center p-8">Loading...</div>;
 
   if (isError)
     return (
@@ -62,7 +63,7 @@ function CharacterPage() {
         </section>
       </div>
       <Separator className="my-8 w-2/3" />
-      <section id="gear" className="flex flex-col gap-4">
+      <section id="gear" className="flex gap-4">
         <GearCard gear={data.gear} />
       </section>
     </main>

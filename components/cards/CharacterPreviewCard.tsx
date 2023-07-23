@@ -8,7 +8,7 @@ import {
 import { useToast } from "@/components/ui/use-toast";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import { ArrowRight, XCircle } from "lucide-react";
+import { ArrowRight, XCircle, User } from "lucide-react";
 import useDeleteCharacter from "@/utils/hooks/useDeleteCharacter";
 
 type CharacterPreviewCardProps = {
@@ -49,7 +49,15 @@ function CharacterPreviewCard({
         />
       </CardDescription>
       <CardHeader>
-        {name} - {realm}
+        <div className="flex flex-col items-center">
+          <User />
+          <span className="text-xl text-yellow-400">{`${name
+            .charAt(0)
+            .toUpperCase()}${name.slice(1)}`}</span>
+          <span className="text-xs">{`${realm
+            .charAt(0)
+            .toUpperCase()}${realm.slice(1)}`}</span>
+        </div>
       </CardHeader>
       <CardContent>
         <Button asChild>
