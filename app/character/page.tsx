@@ -3,7 +3,7 @@
 import { useSearchParams } from "next/navigation";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
-import { CharacterData } from "@/utils/hooks/useSearchCharacter";
+import { CharacterData } from "@/utils/interfaces/characterData";
 import { Separator } from "@/components/ui/separator";
 import GearCard from "@/components/cards/GearCard";
 
