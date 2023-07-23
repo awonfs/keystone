@@ -1,6 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 "use client";
-import useSearchCharacter from "@/utils/hooks/useSearchCharacter";
+import useSearchCharacter from "@/hooks/useSearchCharacter";
 
 import {
   Card,
@@ -13,7 +13,7 @@ import {
 import { Avatar, AvatarImage } from "@/components/ui/avatar";
 import { Separator } from "@/components/ui/separator";
 import CardSkeleton from "./CardSkeleton";
-import RecentRuns from "../RecentRuns";
+import RecentRuns from "./RecentRuns";
 
 function CharacterCard() {
   const { data, isFetching, isError } = useSearchCharacter();
@@ -46,20 +46,13 @@ function CharacterCard() {
             {data?.name} - {data?.realm}
           </CardTitle>
           <CardDescription>
-            <span className="text-yellow-500">
-              {" "}
-              {`${data?.race} ${data?.active_spec_name} ${data?.class}`}
-            </span>
+            {`${data?.race} ${data?.active_spec_name} ${data?.class}`}
           </CardDescription>
-          {data?.guild ? (
-            <CardDescription>{data?.guild.name}</CardDescription>
-          ) : (
-            <CardDescription>Character is not in a guild</CardDescription>
-          )}
+          <CardDescription>{data?.guild.name}</CardDescription>
         </CardHeader>
         <Separator className="w-1/2" />
         <CardContent className="flex flex-col gap-1 items-center mt-4">
-          <span className="text-green-500">{`${data?.gear.item_level_equipped} Item level`}</span>
+          <p>{`${data?.gear.item_level_equipped} Item level`}</p>
           <p>{`${data?.achievement_points} Achievement points`}</p>
         </CardContent>
         <CardFooter>
