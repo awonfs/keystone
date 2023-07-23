@@ -2,11 +2,8 @@ import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import { useAtom } from "jotai";
 import { characterFormDataAtom } from "@/atoms/characterFormDataAtom";
+import { wait } from "../functions/wait";
 import { CharacterData } from "@/utils/interfaces/characterData";
-
-function wait() {
-  return new Promise((resolve) => setTimeout(resolve, 2000));
-}
 
 export default function useSearchCharacter() {
   const [characterFormData] = useAtom(characterFormDataAtom);
@@ -15,7 +12,7 @@ export default function useSearchCharacter() {
   return useQuery({
     queryKey: ["character", characterFormData],
     queryFn: async () => {
-      await wait();
+      await wait(2000);
       const { data } = await axios.get(RAIDERIO_CHARACTER_URL);
       return data as CharacterData;
     },

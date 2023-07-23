@@ -1,11 +1,7 @@
 "use client";
-
 import * as z from "zod";
-import { characterFormDataAtom } from "@/atoms/characterFormDataAtom";
-import { useAtom } from "jotai";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
-import { Button } from "@/components/ui/button";
 import {
   Form,
   FormControl,
@@ -22,15 +18,23 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
+import { useToast } from "../ui/use-toast";
+import { dialogClose } from "../ui/dialog";
+import { useState } from "react";
+import ThreeDotsWave from "../spinners/ThreeDotSpinner";
+import useCreateCharacter from "@/utils/hooks/useCreateCharacter";
+import { wait } from "@/utils/functions/wait";
 
-const formSchema = z.object({
+export const formSchema = z.object({
   characterName: z.string().nonempty(),
   realm: z.string().nonempty(),
   region: z.string().nonempty(),
 });
 
-function SearchCharacterForm() {
-  const [, setCharacterFormData] = useAtom(characterFormDataAtom);
+function AddCharacterForm() {
+  const [isLoading, setIsLoading] = useState(false);
+  const toast = useToast();
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -40,18 +44,26 @@ function SearchCharacterForm() {
       region: "eu",
     },
   });
+  const createCharacter = useCreateCharacter();
 
-  function onSubmit(values: z.infer<typeof formSchema>) {
-    console.log(values);
-    const { characterName, realm, region } = values;
-    setCharacterFormData({
-      characterName,
-      realm,
-      region,
-    });
-    form.reset();
+  async function onSubmit(values: z.infer<typeof formSchema>) {
+    setIsLoading(true);
+    try {
+      await createCharacter.mutateAsync(values);
+      form.reset();
+      dialogClose();
+      toast.toast({
+        title: "Character added",
+        description:
+          "Your character has been added to your profile successfully!",
+      });
+    } catch (error) {
+      console.error(error);
+    } finally {
+      await wait(500);
+      setIsLoading(false);
+    }
   }
-
   return (
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
@@ -96,7 +108,7 @@ function SearchCharacterForm() {
                 <SelectContent>
                   <SelectItem value="eu">EU</SelectItem>
                   <SelectItem value="us">US</SelectItem>
-                  <SelectItem value="KR">KR</SelectItem>
+                  <SelectItem value="kr">KR</SelectItem>
                 </SelectContent>
               </Select>
               <FormMessage />
@@ -104,11 +116,11 @@ function SearchCharacterForm() {
           )}
         />
         <Button className="w-full" type="submit">
-          Submit
+          {isLoading ? <ThreeDotsWave /> : "Submit"}
         </Button>
       </form>
     </Form>
   );
 }
 
-export default SearchCharacterForm;
+export default AddCharacterForm;

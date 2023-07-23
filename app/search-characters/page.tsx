@@ -1,5 +1,5 @@
-import SearchCharacterForm from "@/components/SearchCharacterForm";
 import CharacterInfo from "@/components/CharacterInfo";
+import SearchCharacterForm from "@/components/forms/SearchCharacterForm";
 
 function SearchCharactersPage() {
   return (

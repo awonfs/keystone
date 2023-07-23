@@ -1,4 +1,6 @@
+"use client";
 import Image from "next/image";
+import { motion } from "framer-motion";
 import mythicplus from "../assets/mythicplus.webp";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
@@ -9,7 +11,12 @@ export default function Home() {
   return (
     <main className="container flex flex-col items-center justify-between p-2">
       <section className="flex gap-6 justify-center my-4">
-        <div className="flex flex-col gap-2">
+        <motion.div
+          initial={{ x: "-100vw" }}
+          animate={{ x: 0 }}
+          transition={{ type: "spring", stiffness: 40 }}
+          className="flex flex-col gap-2"
+        >
           <h1 className="text-7xl">Welcome to</h1>
           <span className="text-green-600 text-7xl font-semibold">
             Keystone!
@@ -18,21 +25,22 @@ export default function Home() {
           <p className="text-start ">
             The best way to search and track anything related to mythic+
           </p>
-
           <Button asChild variant="default">
-            <Link href="/search-characters">Get Started!</Link>
+            <Link href="/search-characters">Search Characters</Link>
           </Button>
-        </div>
+        </motion.div>
+
+        <Separator orientation="vertical" />
+
         <div>
-          <Separator orientation="vertical" />
+          <Image
+            className="rounded-md"
+            src={mythicplus}
+            alt="mythic+"
+            width={350}
+            height={350}
+          />
         </div>
-        <Image
-          className="rounded-md"
-          src={mythicplus}
-          alt="mythic+"
-          width={350}
-          height={350}
-        />
       </section>
       <Separator />
       <section className="flex flex-col gap-4 items-start justify-center mt-2 w-2/4">
