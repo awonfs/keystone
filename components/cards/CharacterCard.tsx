@@ -54,7 +54,7 @@ function CharacterCard() {
           {data?.guild ? (
             <CardDescription>{data?.guild.name}</CardDescription>
           ) : (
-            <CardDescription>Character has no guild</CardDescription>
+            <CardDescription>Character is not in a guild</CardDescription>
           )}
         </CardHeader>
         <Separator className="w-1/2" />

@@ -1,13 +1,12 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Separator } from "@/components/ui/separator";
-import { CharacterData } from "@/utils/hooks/useSearchCharacter";
+import { CharacterData } from "@/utils/interfaces/characterData";
 
 export default function GearCard({ gear }: { gear: CharacterData["gear"] }) {
   return (
     <Card>
       <CardHeader>
         <CardTitle>Gear</CardTitle>
-        <span className="text-yellow-500">
+        <span className="text-yellow-400">
           Equipped ilvl: {gear.item_level_equipped}
         </span>
       </CardHeader>
