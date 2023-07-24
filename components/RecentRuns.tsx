@@ -16,19 +16,9 @@ import {
 } from "@/components/ui/table";
 
 import { Star } from "lucide-react";
+import { RecentRuns } from "@/utils/interfaces/recentRuns";
 
-interface RecentRunsProps {
-  recentRuns: [
-    {
-      dungeon: string | undefined;
-      short_name: string | undefined;
-      mythic_level: number | undefined;
-      num_keystone_upgrades: number | undefined;
-    }
-  ];
-}
-
-function RecentRuns({ recentRuns }: RecentRunsProps) {
+function RecentRuns({ recentRuns }: RecentRuns) {
   return (
     <Accordion type="single" collapsible>
       <AccordionItem value="item-1">

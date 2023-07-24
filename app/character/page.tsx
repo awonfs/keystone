@@ -6,6 +6,8 @@ import axios from "axios";
 import { CharacterData } from "@/utils/interfaces/characterData";
 import { Separator } from "@/components/ui/separator";
 import GearCard from "@/components/cards/GearCard";
+import RecentRunsTable from "@/components/RecentRunsTable";
+import Spinner from "@/components/spinners/Spinner";
 
 function CharacterPage() {
   const searchParams = useSearchParams();
@@ -23,7 +25,11 @@ function CharacterPage() {
   });
 
   if (isFetching)
-    return <div className="container flex justify-center p-8">Loading...</div>;
+    return (
+      <div className="container flex justify-center items-center h-screen p-8">
+        <Spinner />
+      </div>
+    );
 
   if (isError)
     return (
@@ -64,7 +70,12 @@ function CharacterPage() {
       </div>
       <Separator className="my-8 w-2/3" />
       <section id="gear" className="flex gap-4">
-        <GearCard gear={data.gear} />
+        <div className="flex-grow">
+          <GearCard gear={data.gear} />
+        </div>
+        <div className="flex-grow">
+          <RecentRunsTable recentRuns={data.mythic_plus_recent_runs} />
+        </div>
       </section>
     </main>
   );
