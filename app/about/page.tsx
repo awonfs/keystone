@@ -61,7 +61,7 @@ function AboutPage() {
               <span className="text-green-500">Keystone</span> is a open source
               free to use service that allows you to search world of warcraft
               characters and save your own characters to your own profile. This
-              is purely a passion project and practice for me to learn new
+              is purely a side project and practice for me to learn new
               technologies.
             </p>
             <div className="flex flex-col mt-2 gap-1">
@@ -89,6 +89,20 @@ function AboutPage() {
                   & shadcn/UI
                 </li>
               </ul>
+              <div className="flex flex-col mt-6">
+                <h3>
+                  <span className="text-yellow-400 text-4xl">
+                    The developer:
+                  </span>
+                </h3>
+                <p className="mx-1">
+                  I have been a developer for about 1 year now. This is
+                  currently a hobby for me and i work full time as a security
+                  system installer. I am starting my bachelors degree in
+                  computer science this fall so i look forward to get into web
+                  development full time in the coming years!
+                </p>
+              </div>
             </div>
           </motion.div>
         </div>
