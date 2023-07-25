@@ -2,10 +2,18 @@
 import AddCharacterModal from "@/components/AddCharacterModal";
 import useGetusersCharacters from "@/utils/hooks/useGetUsersCharacters";
 import CharacterPreviewCard from "@/components/cards/CharacterPreviewCard";
+import Spinner from "@/components/spinners/Spinner";
 
 function MyProfilePage() {
-  const { data: characters } = useGetusersCharacters();
+  const { data: characters, isFetching } = useGetusersCharacters();
 
+  if (isFetching) {
+    return (
+      <div className="container flex mt-24 items-center justify-center">
+        <Spinner />
+      </div>
+    );
+  }
   return (
     <div className="container flex flex-col items-center justify-center">
       <header className="flex items-center justify-evenly w-full mt-4">

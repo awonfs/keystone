@@ -23,7 +23,7 @@ export default function Home() {
           </span>
           <Separator />
           <p className="text-start ">
-            The best way to search and track anything related to mythic+
+            Search characters and view their Mythic+ scores and gear
           </p>
           <Button asChild variant="default">
             <Link href="/search-characters">Search Characters</Link>
