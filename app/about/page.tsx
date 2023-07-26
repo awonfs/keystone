@@ -43,7 +43,7 @@ function AboutPage() {
               initial="hidden"
               animate="visible"
               custom={i}
-              className="inline-block mx-1 text-5xl font-medium"
+              className="inline-block mx-1 text-5xl font-semibold tracking-tight transition-colors"
             >
               {word}{" "}
             </motion.span>
@@ -56,8 +56,10 @@ function AboutPage() {
             initial="hidden"
             animate="visibleAfterTitle"
           >
-            <h2 className="font-semibold">What is Keystone?</h2>
-            <p>
+            <h2 className="scroll-m-20 border-b pb-2 text-2xl font-semibold tracking-tight transition-colors mb-2 w-1/4">
+              What is Keystone?
+            </h2>
+            <p className="leading-7 [&:not(:first-child)]:mt-3">
               <span className="text-green-500">Keystone</span> is a open source
               free to use service that allows you to search world of warcraft
               characters and save your own characters to your own profile. This
@@ -68,7 +70,7 @@ function AboutPage() {
               <h3>
                 <span className="text-green-500">Keystone</span> is built with:
               </h3>
-              <ul className="flex flex-col gap-1 mt-2">
+              <ul className="flex flex-col my-3 ml-6 list-disc [&>li]:mt-1">
                 <li>
                   <span className="text-blue-500">Frontend & Backend:</span>{" "}
                   Next.js with typecript and the new app directory
@@ -90,12 +92,10 @@ function AboutPage() {
                 </li>
               </ul>
               <div className="flex flex-col mt-6">
-                <h3>
-                  <span className="text-yellow-400 text-4xl">
-                    The developer:
-                  </span>
+                <h3 className="text-yellow-400 scroll-m-20 text-3xl font-semibold tracking-tight">
+                  The developer:
                 </h3>
-                <p className="mx-1">
+                <p className="mx-1 leading-7 [&:not(:first-child)]:mt-3">
                   I have been a developer for about 1 year now. This is
                   currently a hobby for me and i work full time as a security
                   system installer. I am starting my bachelors degree in
